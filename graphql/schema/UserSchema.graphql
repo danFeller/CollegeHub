@@ -1,0 +1,67 @@
+input FilterUsers {
+
+    firstName: String
+
+    lastName: String
+
+    email: [String!]
+
+    username: [String!]
+
+    events: [ID!]
+
+}
+
+type User {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    email: String!
+    username: String!
+    events: [Event!]
+}
+
+input CreateUserInput {
+    firstName: String!
+    lastName: String!
+    email: String!
+    password: String!
+    username: String!
+}
+
+input UpdateUserInput {
+    firstName: String
+    lastName: String
+    email: String
+    password: String
+    username: String
+}
+
+type Mutation {
+
+    #create event
+    createEvent(input: CreateEventInput): Event!
+    #update event
+    updateEvent(id: ID!, revision: ID!, input: UpdateEventInput): Event!
+    #delete event
+    deleteEvent(id: ID!): Event!
+    #add user to event
+    addUser(eventId: ID!, eventRevision: ID!, userId: ID!): Event!
+    #remove user from event
+    removeUser(eventId: ID!, eventRevision: ID!, userId: ID!): Event!
+    #create a user
+    createUser(input: CreateUserInput!): User!
+    #update a user
+    updateUser(id: ID!, revision: ID!, input: UpdateUserInput): User!
+}
+
+type Query {
+
+    user(id: ID!): User!
+
+    users(filter: FilterUsers): [User!]!
+
+    events(filter: EventFilter): [Event!]
+
+    event(id: ID!): Event
+}

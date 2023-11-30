@@ -1,0 +1,102 @@
+enum EventStatus {
+    DRAFT
+    IN_PROGRESS
+    COMPLETED
+}
+
+type Location {
+    id: ID!
+
+    address: String!
+
+    city: String!
+
+    state: String!
+
+    zipcode: String!
+
+    country: String!
+}
+
+type Event {
+    id: ID!
+
+    status: EventStatus!
+
+    name: String!
+
+    organizer: User!
+
+    attendees: [User!]
+
+    location: Location!
+
+    startTime: String!
+
+    endTime: String!
+}
+
+input EventFilter {
+    status: [EventStatus!]
+    name: String
+    organizer: ID
+    attendees: [ID!]
+    city: [String!]
+    state: [String!]
+    country: [String!]
+    address: String
+    startTime: [String!]
+    endTime: [String!]
+}
+
+input CreateLocationInput {
+
+    address: String!
+
+    city: String!
+
+    state: String!
+
+    zipcode: String!
+
+    country: String!
+}
+
+input UpdateLocationInput {
+
+    address: String
+
+    city: String
+
+    state: String
+
+    zipcode: String
+
+    country: String
+}
+
+input CreateEventInput {
+    name: String!
+
+    organizer: ID!
+
+    location: CreateLocationInput!
+
+    startTime: String!
+
+    endTime: String!
+}
+
+input UpdateEventInput {
+
+    name: String
+
+    organizer: ID
+
+    location: UpdateLocationInput
+
+    startTime: String
+
+    endTime: String
+
+}

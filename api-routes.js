@@ -2,8 +2,10 @@ const apiRouter = require("koa-router")()
 const session = require('koa-session')
 const passport = require('koa-passport');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
+const {User} = require('./database/UserModel')
 
 const { oauth } = require('./config')
+const {collections} = require("./database/database");
 
 module.exports = (App) => {
 
@@ -42,9 +44,27 @@ module.exports = (App) => {
             ctx.body = {
                 message: 'User details',
                 user: {
-                    ...ctx.state.user
+                    firstName: ctx.state.user.name.givenName,
+                    lastName: ctx.state.user.name.familyName,
+                    email: ctx.state.user.email,
+                    username: ctx.state.user.email,
+                    provider: ctx.state.user.provider,
+                    picture: ctx.state.user.picture
                 },
                 isAuthenticated: true,
+            }
+            try {
+                const existingUser = await collections.users.findOne({ email: ctx.body.user.email });
+                if (existingUser) {
+                    console.log('User already exists.');
+                } else {
+                    const data = { user: ctx.body.user}
+                    // Save the user if it doesn't exist
+                    await collections.users.insertOne(data.user)
+                    console.log('User saved to the collection.');
+                }
+            } catch (error) {
+                console.log(error)
             }
         } else {
             ctx.body = {

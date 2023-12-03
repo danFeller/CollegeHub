@@ -44,7 +44,7 @@ type Mutation {
     #update event
     updateEvent(id: ID!, revision: ID!, input: UpdateEventInput): Event!
     #delete event
-    deleteEvent(id: ID!): Event!
+    deleteEvent(id: ID!): String!
     #add user to event
     addUser(eventId: ID!, eventRevision: ID!, userId: ID!): Event!
     #remove user from event

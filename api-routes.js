@@ -2,7 +2,6 @@ const apiRouter = require("koa-router")()
 const session = require('koa-session')
 const passport = require('koa-passport');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
-const {User} = require('./database/UserModel')
 
 const { oauth } = require('./config')
 const {collections} = require("./database/database");

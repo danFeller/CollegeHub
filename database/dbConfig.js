@@ -7,7 +7,7 @@ module.exports = {
                 $jsonSchema: {
                     bsonType: "object"
                 },
-                required: ["username", "email"],
+                required: ["username", "email", "firstName", "lastName"],
                 properties: {
                     username: {
                         bsonType: "string",
@@ -18,6 +18,14 @@ module.exports = {
                         pattern: "@gmail\\.com$",
                         description: "Email must be a string and match the regular expression pattern.",
                     },
+                    firstName: {
+                        bsonType: "string",
+                        description: "The first name of the user"
+                    },
+                    lastName: {
+                        bsonType: "string",
+                        description: "The last name of the user"
+                    }
                 }
             },
             indexes: [
@@ -29,6 +37,52 @@ module.exports = {
                     key: { email: 1 },
                     unique: true
                 },
+            ]
+        },
+        {
+            name: "events",
+            validator: {
+                $jsonSchema: {
+                    bsonType: "object"
+                },
+                required: ['status', 'name', 'organizer', 'location', 'startTime', 'endTime'],
+                properties: {
+                    status: {
+                        enum: ['DRAFT', 'IN_PROGRESS', 'COMPLETED']
+                    },
+                    name: {
+                        bsonType: 'string'
+                    },
+                    location: {
+                        bsonType: 'object',
+                        required: ['address', 'city', 'state', 'zipcode', 'country'],
+                        properties: {
+                            address: {
+                                bsonType: 'string'
+                            },
+                            city: {
+                                bsonType: 'string'
+                            },
+                            state: {
+                                bsonType: 'string'
+                            },
+                            zipcode: {
+                                bsonType: 'string'
+                            },
+                            country: {
+                                bsonType: 'string'
+                            }
+                        }
+                    }
+                }
+            },
+            indexes: [
+                {
+                    key: {
+                        name: 1
+                    },
+                    unique: true
+                }
             ]
         }
     ]

@@ -1,2 +1,4 @@
 /node_modules/
 /.idea/*
+*.pb
+.idea/sonarlint/issuestore/index.pb

@@ -37,6 +37,7 @@ type Event {
 }
 
 input EventFilter {
+    id: [ID!]
     status: [EventStatus!]
     name: String
     organizer: ID

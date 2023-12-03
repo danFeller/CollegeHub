@@ -24,7 +24,7 @@ async function connectMongoDatabase() {
             const collection = client.db(dbConfig.dbName)
                 .collection(config.name, {validator: config.validator})
             collections[config.name] = collection
-            console.log(` Created collection: ${config.name}`)
+            console.log(` Created collection: ${collection.collectionName}`)
         }
 
     } catch (error) {

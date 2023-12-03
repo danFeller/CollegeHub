@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Apurva Patel",
   "license": "ISC",
   "dependencies": {
     "@apollo/server": "^4.9.5",
@@ -16,6 +16,7 @@
     "@graphql-tools/load-files": "^7.0.0",
     "@graphql-tools/merge": "^9.0.1",
     "@koa/cors": "^4.0.0",
+    "apollo-datasource": "^3.3.2",
     "apollo-server-koa": "^3.13.0",
     "graphql": "^16.8.1",
     "jsonwebtoken": "^9.0.2",
@@ -26,9 +27,12 @@
     "koa-session": "^6.4.0",
     "mongodb": "^6.3.0",
     "mongoose": "^8.0.2",
+    "nanoid": "^5.0.4",
+    "node-fetch": "^2.6.1",
     "passport": "^0.7.0",
     "passport-google-oauth2": "^0.2.0",
     "passport-jwt": "^4.0.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "uuid": "^9.0.1"
   }
 }

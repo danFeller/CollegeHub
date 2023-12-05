@@ -1,7 +1,7 @@
 const eventResolvers = {
     Query: {
          events:async (_, { filter }, { dataSources, ctx }) => {
-             return await dataSources.serviceAPI.events(ctx, filter)
+            return await dataSources.serviceAPI.events(ctx, filter)
          },
         event: async(_, {id}, { dataSources, ctx }) => {
              return await dataSources.serviceAPI.events(ctx, { id: [id]})

@@ -94,6 +94,34 @@ class ServiceAPI extends DataSource {
     async removeUser(ctx, eventId, eventRevision, userId){}
 
     async events(ctx, filter){}
+
+    async users(ctx, filter){}
+
+    async createUser(ctx, input){
+        const insertedDocument = await collections.users.insertOne({ ...input, revision: v4()})
+        const result = await collections.users.findOne( {_id: insertedDocument.insertedId})
+        this.reconcileDocument(result)
+        return result
+    }
+    async updateUser(ctx, id, revision, input){
+        const filter = {
+            _id: new ObjectId(id),
+            revision: revision
+        }
+        const update = {
+            $set: {
+                ...input,
+                revision: v4()
+            }
+        }
+        await collections.users.updateOne(filter,update, { upsert: true})
+        const result = await collections.users.findOne( { _id: new ObjectId(id) })
+        this.reconcileDocument(result)
+        return result
+
+    }
+
+    
 }
 
 /** @module */

@@ -48,7 +48,8 @@ module.exports = (App) => {
                     email: ctx.state.user.email,
                     username: ctx.state.user.email,
                     provider: ctx.state.user.provider,
-                    picture: ctx.state.user.picture
+                    picture: ctx.state.user.picture,
+                    events: []
                 },
                 isAuthenticated: true,
             }

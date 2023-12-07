@@ -1,3 +1,4 @@
+const {ObjectId} = require("mongodb");
 const eventResolvers = {
     Query: {
          events:async (_, { filter }, { dataSources, ctx }) => {
@@ -25,14 +26,14 @@ const eventResolvers = {
         }
     },
     Event: {
-        __resolveReference: async (reference, { dataSources, ctx }) => {
+        __resolveReference: async (reference,_, { dataSources, ctx }) => {
             return await dataSources.serviceAPI.events(ctx, { id: [reference.id]})
         },
-        organizer: async(reference, { dataSources, ctx}) => {
-            return await dataSources.serviceAPI.users(ctx, { id: [reference.organizer]})
+        organizer: async(reference,_, { dataSources, ctx}) => {
+            return await dataSources.serviceAPI.user(ctx, reference.organizer)
         },
-        attendees: async (reference, { dataSources, ctx}) => {
-            return await dataSources.serviceAPI.users(ctx, { id: [reference.attendees.map(item => item.$oid)]})
+        attendees: async (reference, _, { dataSources, ctx}) => {
+            return reference.attendees.map(async userId => await dataSources.serviceAPI.user(ctx, userId))
         }
     }
 };

@@ -14,6 +14,14 @@ const userResolvers = {
         updateUser: async (_, { id, revision, input }, { dataSources, ctx }) => {
             return await dataSources.serviceAPI.updateUser(ctx, id, revision, input)
         }
+    },
+    User: {
+        __resolveReference: async (reference, _, {dataSources, ctx }) => {
+            return dataSources.serviceAPI.users(ctx, { id: reference.id })
+        },
+        events: async (reference,_, { dataSources, ctx }) => {
+            return reference.events.map(async item => await dataSources.serviceAPI.event(ctx, item))
+        }
     }
 };
 

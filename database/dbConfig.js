@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 module.exports = {
     dbName: 'event-management',
     collections: [
@@ -25,7 +26,13 @@ module.exports = {
                     lastName: {
                         bsonType: "string",
                         description: "The last name of the user"
-                    }
+                    },
+                    events: [
+                        {
+                            bsonType: "string",
+                            reference: 'events'
+                        }
+                    ]
                 }
             },
             indexes: [
@@ -45,7 +52,7 @@ module.exports = {
                 $jsonSchema: {
                     bsonType: "object"
                 },
-                required: ['status', 'name', 'organizer', 'location', 'startTime', 'endTime'],
+                required: ['status', 'name', 'organizer', 'location', 'startTime', 'endTime', 'organizer'],
                 properties: {
                     status: {
                         enum: ['DRAFT', 'IN_PROGRESS', 'COMPLETED']
@@ -73,7 +80,18 @@ module.exports = {
                                 bsonType: 'string'
                             }
                         }
-                    }
+                    },
+                    organizer: {
+                        bsonType: 'string',
+                        ref: 'users'
+                    },
+                    attendees: [
+                        {
+                            bsonType: 'string',
+                            ref: 'users'
+                        }
+                    ]
+
                 }
             },
             indexes: [

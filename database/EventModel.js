@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const dbConfig = require("./dbConfig");
+const {Timestamp, UUID} = require("mongodb");
 const EventSchema = new mongoose.Schema({
     status: {
         type: String,
@@ -30,6 +31,21 @@ const EventSchema = new mongoose.Schema({
             type: String,
             required: true
         }
+    },
+    organizer: {
+        type: String,
+        ref: 'User'
+    },
+    attendees: {
+        type: Array,
+        ref: 'User'
+    },
+    startTime: {
+        type: Timestamp
+    },
+    revision: {
+        type: UUID,
+        autoCreate: true
     }
 })
 

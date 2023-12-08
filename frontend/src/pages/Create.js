@@ -1,13 +1,32 @@
-import React, { useState } from 'react';
+import axios from "axios";
+import React, {useEffect, useState} from 'react';
 import NavBar from "../components/NavBar";
+import backendURL from "../config";
 
 function Create () {
     const [inputs, setInputs] = useState({});
+    const [userId, setUserId] = useState('')
+
+    const getUser = async () => {
+        try {
+            const url = `${backendURL.uri}/login/success`;
+            const { data: { user } } = await axios.get(url, { withCredentials: true });
+            return user
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect( () => {
+        getUser().then((r)=> {
+            setUserId(r.id)
+        });
+    }, []);
 
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
-        setInputs(values => ({...values, [name]: value}));
+        setInputs(values => ({...values, [name]: value, organizerId: userId}));
     }
 
     const handleSubmit = async (event) => {
@@ -20,7 +39,7 @@ function Create () {
                     createEvent(
                         input: {
                             name: "${inputs.name}"
-                            organizer: "6571e8a930e86eadbda1fa2c"
+                            organizer: "${inputs.organizerId}"
                             location: {
                                 address: "${inputs.address}"
                                 city: "${inputs.city}"
@@ -39,7 +58,7 @@ function Create () {
         };
         
         try {
-            const response = await fetch('http://localhost:3000/graphql', {
+            const response = await fetch(`http://localhost:3000/graphql`, {
                 method: 'POST',
                 body: JSON.stringify(requestBody),
                 headers: {

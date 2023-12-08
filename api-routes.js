@@ -64,10 +64,12 @@ module.exports = (App) => {
                 const existingUser = await collections.users.findOne({ email: ctx.body.user.email });
                 if (existingUser) {
                     console.log('User already exists.');
+                    ctx.body.user.id = existingUser._id
                 } else {
                     const data = { user: ctx.body.user}
                     // Save the user if it doesn't exist
-                    await collections.users.insertOne(data.user)
+                    const user = await collections.users.insertOne(data.user)
+                    ctx.body.user.id = user.insertedId
                     console.log('User saved to the collection.');
                 }
             } catch (error) {

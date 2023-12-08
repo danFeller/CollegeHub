@@ -90,7 +90,13 @@ module.exports = {
                             bsonType: 'string',
                             ref: 'users'
                         }
-                    ]
+                    ],
+                    startTime: {
+                        bsonType: 'string'
+                    },
+                    endTime: {
+                        bsonType: 'string'
+                    }
 
                 }
             },

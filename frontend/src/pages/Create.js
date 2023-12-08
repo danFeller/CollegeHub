@@ -47,8 +47,8 @@ function Create () {
                                 country: "${inputs.country}"
                                 zipcode: "${inputs.zip}"
                             }
-                            startTime: "${inputs.sTime}"
-                            endTime: "${inputs.eTime}"
+                            startTime: "${inputs.startTime}"
+                            endTime: "${inputs.endTime}"
                         }
                     ) {
                         id
@@ -106,11 +106,11 @@ function Create () {
                     </div>
                     <div className="form-group">
                         <label htmlFor="stime">Start Time:</label>
-                        <input type="time" className="form-control" id="stime" name="stime" step="1" value={inputs.stime || ""} onChange={handleChange} />
+                        <input type="time" className="form-control" id="stime" name="stime" step="1" value={inputs.startTime || new Date().toString()} onChange={handleChange} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="etime">End Time:</label>
-                        <input type="time" className="form-control" id="etime" name="etime" step="1" value={inputs.etime || ""} onChange={handleChange} />
+                        <input type="time" className="form-control" id="etime" name="etime" step="1" value={inputs.endTime || new Date().toString()} onChange={handleChange} />
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>

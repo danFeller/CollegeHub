@@ -39,6 +39,13 @@ module.exports = (App) => {
     App.use(passport.session());
 
     apiRouter.get('/', async (ctx) => {
+        ctx.body = {
+            message: "Welcome to Maverick Event Management World!",
+            isAuthenticated: false
+        }
+    })
+
+    apiRouter.get('/login/success', async (ctx) => {
         if (ctx.isAuthenticated()) {
             ctx.body = {
                 message: 'User details',
@@ -67,10 +74,7 @@ module.exports = (App) => {
                 console.log(error)
             }
         } else {
-            ctx.body = {
-                message: "Welcome to Maverick Event Management World!",
-                isAuthenticated: false
-            }
+            ctx.redirect('/')
         }
     });
 
@@ -80,7 +84,11 @@ module.exports = (App) => {
         '/auth/google/callback',
         passport.authenticate('google', { failureRedirect: '/' }),
         (ctx) => {
-            ctx.redirect(`http://localhost:3001/events`);
+            const userInformation = {
+                ... ctx.state.user
+                // Add other relevant user information as needed
+            };
+            ctx.redirect('http://localhost:2000/events')
         }
     );
 

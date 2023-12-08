@@ -11,6 +11,7 @@
     "bootstrap": "^4.0.0-alpha.6",
     "cross-env": "^7.0.3",
     "graphql": "^16.8.1",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^18.2.0",
@@ -21,7 +22,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "cross-env PORT=2000 && react-scripts start",
+    "start": "PORT=2000 react-scripts start",
     "build:ui": "react-scripts build",
     "test:ui": "react-scripts test",
     "eject:ui": "react-scripts eject"

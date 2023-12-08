@@ -5,7 +5,6 @@ const Login = () => {
 
     const handleGoogleSignIn = async () => {
         try {
-            console.log("Hello, World!")
             // Make a request to http://localhost:3000/auth/google
             window.open( 'http://localhost:3000/auth/google')
         } catch (error) {

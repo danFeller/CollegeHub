@@ -21,3 +21,9 @@ E
 frontend/package.json,3/7/37083060967a471c011a16651e22bdc2ade41759
 J
 frontend/src/pages/Home.js,6/d/6d69fb10eaae9b9c3ab35dc11a291465f02da4fe
+L
+frontend/src/pages/Header.js,4/f/4fd601cf9f99abad6a24b42ce6aae3dc2ab1d24f
+9
+	config.js,1/6/1677f29b39bf4fb465d7689c0b6b95fc646fcdbc
+E
+frontend/src/index.js,0/9/09a4e53ab0e5e7637fd01136f19a9bb570e1ef2d

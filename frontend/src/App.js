@@ -1,6 +1,12 @@
+import React from 'react'
 import styled from 'styled-components';
 import {ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from} from '@apollo/client';
 import {onError} from '@apollo/client/link/error'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import Login from './pages/Login';
+import './App.css'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+
 
 const Red = styled.div`
   color: red
@@ -27,7 +33,12 @@ const client = new ApolloClient({
 
 function App() {
   return <ApolloProvider client={client}>
-    
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/sign-in" element={<Login />} />
+      </Routes>
+    </Router>
   </ApolloProvider>
 }
 

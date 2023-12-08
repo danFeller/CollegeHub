@@ -80,7 +80,7 @@ module.exports = (App) => {
         '/auth/google/callback',
         passport.authenticate('google', { failureRedirect: '/' }),
         (ctx) => {
-            ctx.redirect(`${frontendURL}/events`);
+            ctx.redirect(`http://localhost:3001/events`);
         }
     );
 

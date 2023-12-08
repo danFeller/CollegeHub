@@ -1,8 +1,8 @@
 import React from 'react';
-
 import NavBar from "../components/NavBar";
 
 const Login = () => {
+
     const handleGoogleSignIn = async () => {
         try {
             console.log("Hello, World!")

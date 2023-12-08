@@ -1,6 +1,10 @@
+import axios from 'axios';
 
-function Home(){
-    return <p>Home</p>
+const Home = async () => {
+
+    return (
+        <p> Welcome to Event Management</p>
+    )
 }
 
 export default Home;

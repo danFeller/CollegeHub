@@ -19,7 +19,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start:ui": "set PORT=2000 && react-scripts start",
+    "start:ui": "cross-env PORT=2000 react-scripts start",
     "build:ui": "react-scripts build",
     "test:ui": "react-scripts test",
     "eject:ui": "react-scripts eject"

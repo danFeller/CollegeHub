@@ -1,16 +1,10 @@
 import React from 'react'
-import styled from 'styled-components';
 import {ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from} from '@apollo/client';
 import {onError} from '@apollo/client/link/error'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Login from './pages/Login';
 import './App.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-
-
-const Red = styled.div`
-  color: red
-`;
 
 const errorLink = onError(({graphqlErrors, networkError}) => {
   if(graphqlErrors){
@@ -37,6 +31,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/sign-in" element={<Login />} />
+        <Route path="/events" element={<Login />} />
+        <Route path="/create" element={<Login />} />
+        <Route path="/myevents" element={<Login />} />
       </Routes>
     </Router>
   </ApolloProvider>

@@ -4,7 +4,7 @@ import {onError} from '@apollo/client/link/error'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Login from './pages/Login';
 import Home from './pages/Home';
-import './App.css'
+import Create from './pages/Create';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 const errorLink = onError(({graphqlErrors, networkError}) => {
@@ -33,7 +33,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/sign-in" element={<Login />} />
         <Route path="/events" element={<Home />} />
-        <Route path="/create" element={<Login />} />
+        <Route path="/create" element={<Create />} />
         <Route path="/myevents" element={<Login />} />
       </Routes>
     </Router>

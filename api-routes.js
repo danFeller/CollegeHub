@@ -3,7 +3,7 @@ const session = require('koa-session')
 const passport = require('koa-passport');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
-const { oauth } = require('./config')
+const { oauth, frontendURL } = require('./config')
 const {collections} = require("./database/database");
 
 module.exports = (App) => {
@@ -80,7 +80,7 @@ module.exports = (App) => {
         '/auth/google/callback',
         passport.authenticate('google', { failureRedirect: '/' }),
         (ctx) => {
-            ctx.redirect('/');
+            ctx.redirect(`${frontendURL}/events`);
         }
     );
 

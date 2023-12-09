@@ -3,6 +3,7 @@ import {ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from} from '@apol
 import {onError} from '@apollo/client/link/error'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Login from './pages/Login';
+import Home from './pages/Home';
 import './App.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
@@ -31,7 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/sign-in" element={<Login />} />
-        <Route path="/events" element={<Login />} />
+        <Route path="/events" element={<Home />} />
         <Route path="/create" element={<Login />} />
         <Route path="/myevents" element={<Login />} />
       </Routes>

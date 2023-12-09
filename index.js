@@ -7,7 +7,7 @@ const { apolloServer } = require('./server');
 const {connectMongoDatabase} = require("./database/database");
 
 const App = new Koa();
-const port = 3000;
+const port = process.env.PORT || 3000;
 let httpServer
 
 App.use(cors({

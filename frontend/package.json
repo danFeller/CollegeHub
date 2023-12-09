@@ -18,15 +18,18 @@
     "react-router": "^6.20.1",
     "react-router-dom": "^6.20.1",
     "react-scripts": "^5.0.1",
+    "serve": "^14.2.1",
     "styled-components": "^6.1.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "set PORT=2000 && react-scripts start",
-    "build:ui": "react-scripts build",
-    "test:ui": "react-scripts test",
-    "eject:ui": "react-scripts eject"
-  },
+    "dev": "react-scripts start",
+    "start": "PORT=2000 serve -s build",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
+    },
   "eslintConfig": {
     "extends": [
       "react-app",

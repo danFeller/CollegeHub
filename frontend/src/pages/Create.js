@@ -105,12 +105,12 @@ function Create () {
                         <input type="text" className="form-control" id="zip" name="zip" value={inputs.zip || ""} onChange={handleChange} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="stime">Start Time:</label>
-                        <input type="time" className="form-control" id="stime" name="stime" step="1" value={inputs.startTime || new Date().toString()} onChange={handleChange} />
+                        <label htmlFor="startTime">Start Time:</label>
+                        <input type="date" className="form-control" id="startTime" name="startTime" step="1" value={inputs.startTime || new Date().toString()} onChange={handleChange} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="etime">End Time:</label>
-                        <input type="time" className="form-control" id="etime" name="etime" step="1" value={inputs.endTime || new Date().toString()} onChange={handleChange} />
+                        <label htmlFor="endTime">End Time:</label>
+                        <input type="date" className="form-control" id="endTime" name="endTime" step="1" value={inputs.endTime || new Date().toString()} onChange={handleChange} />
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>

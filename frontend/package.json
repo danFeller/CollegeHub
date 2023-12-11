@@ -23,11 +23,21 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+<<<<<<< HEAD
     "start": "set PORT=2000 && react-scripts start",
     "build:ui": "react-scripts build",
     "test:ui": "react-scripts test",
     "eject:ui": "react-scripts eject"
   },
+=======
+    "dev": "react-scripts start",
+    "start": "cross-env PORT=2000 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
+    },
+>>>>>>> 28bb873755b05653f7f92ee05cd4b5fb60968fba
   "eslintConfig": {
     "extends": [
       "react-app",

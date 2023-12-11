@@ -10,8 +10,48 @@ function Create () {
         setInputs(values => ({...values, [name]: value}));
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
         console.log(inputs)
+        const requestBody = {
+            query: `
+                mutation CreateEvent {
+                    createEvent(
+                        input: {
+                            name: "${inputs.name}"
+                            organizer: "6571e8a930e86eadbda1fa2c"
+                            location: {
+                                address: "${inputs.address}"
+                                city: "${inputs.city}"
+                                state: "${inputs.state}"
+                                country: "${inputs.country}"
+                                zipcode: "${inputs.zip}"
+                            }
+                            startTime: "${inputs.sTime}"
+                            endTime: "${inputs.eTime}"
+                        }
+                    ) {
+                        id
+                    }
+                }
+            `
+        };
+        
+        try {
+            const response = await fetch('http://localhost:3000/graphql', {
+                method: 'POST',
+                body: JSON.stringify(requestBody),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const responseData = await response.json();
+            console.log(responseData);
+        } catch (error) {
+            console.error('Error during GraphQL request:', error);
+        }
         //window.location.href = '/blog';
     }
 
@@ -26,20 +66,32 @@ function Create () {
                         <input type="text" className="form-control" id="name" name="name" value={inputs.name || ""} onChange={handleChange} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="type">Type:</label>
-                        <input type="text" className="form-control" id="type" name="type" value={inputs.type || ""} onChange={handleChange} />
+                        <label htmlFor="address">Address:</label>
+                        <input type="text" className="form-control" id="address" name="address" value={inputs.address || ""} onChange={handleChange} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="date">Date:</label>
-                        <input type="date" className="form-control" id="date" name="date" value={inputs.date || ""} onChange={handleChange} />
+                        <label htmlFor="city">City:</label>
+                        <input type="text" className="form-control" id="city" name="city" value={inputs.city || ""} onChange={handleChange} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="time">Time:</label>
-                        <input type="time" className="form-control" id="time" name="time" value={inputs.time || ""} onChange={handleChange} />
+                        <label htmlFor="state">State:</label>
+                        <input type="text" className="form-control" id="state" name="state" value={inputs.state || ""} onChange={handleChange} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="location">Location:</label>
-                        <input type="text" className="form-control" id="location" name="location" value={inputs.location || ""} onChange={handleChange} />
+                        <label htmlFor="country">Country:</label>
+                        <input type="text" className="form-control" id="country" name="country" value={inputs.country || ""} onChange={handleChange} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="zip">Zip code:</label>
+                        <input type="text" className="form-control" id="zip" name="zip" value={inputs.zip || ""} onChange={handleChange} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="stime">Start Time:</label>
+                        <input type="time" className="form-control" id="stime" name="stime" step="1" value={inputs.stime || ""} onChange={handleChange} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="etime">End Time:</label>
+                        <input type="time" className="form-control" id="etime" name="etime" step="1" value={inputs.etime || ""} onChange={handleChange} />
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>

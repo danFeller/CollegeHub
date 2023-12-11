@@ -11,6 +11,12 @@ const Welcome = styled.div`
     padding-top: 20px;
 
 `;
+const EventGrid = styled.div`
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem;
+`
 
 
 function Home() {
@@ -44,7 +50,11 @@ function Home() {
             <NavBar name={firstName} image={picture}/>
             <Welcome>
                 <MyEvents/>
-                <Events/>
+                <EventGrid>
+                    <Events/>
+                    <Events/>
+                    <Events/>
+                </EventGrid>
             </Welcome>
 
         </>

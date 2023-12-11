@@ -1,6 +1,17 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import backendURL from "../config";
+import NavBar from "../components/NavBar";
+import Events from "../components/Events";
+import MyEvents from "../components/MyEvents";
+import styled from 'styled-components';
+
+const Welcome = styled.div`
+    // border: 1px solid red;
+    padding-top: 20px;
+
+`;
+
 
 function Home() {
     const [firstName, setFirstName] = useState(null);
@@ -12,6 +23,7 @@ function Home() {
         try {
             const url = `${backendURL.uri}/login/success`;
             const { data: { user } } = await axios.get(url, { withCredentials: true });
+            console.log(user)
             return user
         } catch (err) {
             console.log(err);
@@ -28,10 +40,14 @@ function Home() {
     }, []);
 
     return (
-        <div className="container">
-            <p>Welcome {firstName}!</p>
-            <img src={picture}/>
-        </div>
+        <>
+            <NavBar name={firstName} image={picture}/>
+            <Welcome>
+                <MyEvents/>
+                <Events/>
+            </Welcome>
+
+        </>
     );
 }
 

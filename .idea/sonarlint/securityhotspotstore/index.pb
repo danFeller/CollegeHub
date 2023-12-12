@@ -55,3 +55,5 @@ F
 database/EventModel.js,f/5/f5c17d958ee37f3f729e4ce09fba05bec93fc8ff
 9
 	server.js,d/c/dc60ea9ee1ff6246bf342463277d5b914db2883d
+J
+frontend/public/index.html,5/3/53b461857fde9b76a1c6e79a500050ceffbd7f33

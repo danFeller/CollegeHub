@@ -1,7 +1,6 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
 import styled from 'styled-components';
-import backendURL from "../config";
 import {Button, Section} from './common.js';
 import { useQuery, gql, useMutation} from '@apollo/client';
 import Overlay from './Overlay'
@@ -79,8 +78,9 @@ function Events() {
     };
     const getUser = async () => {
         try {
-            const url = `${backendURL.uri}/login/success`;
+            const url = `https://event-management-backend-ffed50068636.herokuapp.com/login/success`;
             const { data: { user } } = await axios.get(url, { withCredentials: true });
+            console.log(user)
             return user
         } catch (err) {
             console.log(err);

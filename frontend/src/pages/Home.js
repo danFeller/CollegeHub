@@ -32,6 +32,7 @@ function Home() {
         try {
             const url = `https://event-management-backend-ffed50068636.herokuapp.com/login/success`;
             const { data: { user } } = await axios.get(url, { withCredentials: true });
+            console.log(user)
             return user
         } catch (err) {
             console.log(err);

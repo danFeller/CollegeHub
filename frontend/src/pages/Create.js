@@ -3,7 +3,6 @@ import React, {useEffect, useState} from 'react';
 import { gql, useMutation} from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import NavBar from "../components/NavBar";
-import backendURL from "../config";
 
 const CREATE_EVENT = gql`
     mutation createEvent($input: CreateEventInput!) {
@@ -23,8 +22,9 @@ function Create () {
 
     const getUser = async () => {
         try {
-            const url = `${backendURL.uri}/login/success`;
+            const url = `https://event-management-backend-ffed50068636.herokuapp.com/login/success`;
             const { data: { user } } = await axios.get(url, { withCredentials: true });
+            console.log(user)
             return user
         } catch (err) {
             console.log(err);

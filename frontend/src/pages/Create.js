@@ -108,11 +108,11 @@ function Create () {
                         <input type="text" className="form-control" id="zip" name="zip" value={inputs.zip || ""} onChange={handleChange} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="startTime">Start Time:</label>
+                        <label htmlFor="startTime">Start Date:</label>
                         <input type="date" className="form-control" id="startTime" name="startTime" step="1" value={inputs.startTime || new Date().toString()} onChange={handleChange} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="endTime">End Time:</label>
+                        <label htmlFor="endTime">End Date:</label>
                         <input type="date" className="form-control" id="endTime" name="endTime" step="1" value={inputs.endTime || new Date().toString()} onChange={handleChange} />
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>

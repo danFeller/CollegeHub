@@ -39,7 +39,7 @@ const Title = styled.h1`
 
 function NavBar(props){
   const navigate = useNavigate();
-  const [authenticated, setAuthenticated] = useState('');
+  const [authenticated, setAuthenticated] = useState(false);
   const {name, image} = props;
 
   const getUser = async () => {
@@ -60,6 +60,7 @@ function NavBar(props){
 
   const handleLogOut = async (e) => {
     const url = `${backendURL.uri}/logout`
+    setAuthenticated(false)
     await axios.get(url)
     navigate('/');
     window.location.reload();

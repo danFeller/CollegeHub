@@ -109,7 +109,7 @@ function Events() {
                     <EventModal key={events.id}>
                         <ModalRow>
                             <h2>{events.name}</h2>
-                            <Button onClick={() => handleDelete(events.id)}>Delete</Button>
+                            {events.organizer.id === userId ? (<Button onClick={() => handleDelete(events.id)}>Delete</Button>) : (<></>)}
                         </ModalRow>
                         <h5>Event Start Date - {events.startTime}</h5>
                         <ModalRow>

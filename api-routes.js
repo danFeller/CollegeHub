@@ -76,7 +76,9 @@ module.exports = (App) => {
                 console.log(error)
             }
         } else {
-            ctx.redirect('/')
+            ctx.body = {
+                isAuthenticated: false
+            }
         }
     });
 

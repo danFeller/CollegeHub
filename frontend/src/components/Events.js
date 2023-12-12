@@ -71,7 +71,8 @@ const Title = styled.h2`
 function Events() {
     const [userId, setUserId] = useState('');
     const [isOpen, setIsOpen] = useState(false);
-    const [attendees, setAttendees] = useState([]); 
+    const [attendees, setAttendees] = useState([]);
+    const [isJoined, setIsJoined] = useState(false);
 
     const toggleOverlay = () => {
       setIsOpen(!isOpen);
@@ -111,6 +112,7 @@ function Events() {
     };
 
     const handleAttendees = async (eventId, eventRevision) => {
+
         await addUser({
             variables: {
                 eventId: eventId,
@@ -119,6 +121,8 @@ function Events() {
             },
             refetchQueries: [{ query: GET_EVENTS }],
         });
+
+        setIsJoined(true)
     };
 
     if (loading) return <p>Loading...</p>;
@@ -142,11 +146,11 @@ function Events() {
                         <h5>Event Start Date - {events.startTime}</h5>
                         <ModalRow>
                             <h5>Organizer - {events.organizer.firstName}</h5>
-                            {events.organizer.id !== userId || events.attendees.some((obj) => obj.id === userId) ? (
+                            {events.organizer.id !== userId ? events.attendees.some((obj) => obj.id === userId) ? isJoined ? (
                                 <Button onClick={() => handleAttendees(events.id, events.revision)}>Join</Button>
                             ) : (
-                                <></>
-                            )}
+                                <h5>Joined!</h5>
+                            ) : (<></>): (<></>)}
                         </ModalRow>
                         {/* onClick={() => handleAttendeesList(events.id)} */}
                         <ModalRow>

@@ -44,21 +44,14 @@ function Create () {
     }
 
     const handleSubmit = async (event) => {
+        console.log(userId)
         event.preventDefault();
-        let currentUserId
-
-        if (userId.trim().length === 0) {
-            currentUserId = await getUser()
-        }
-
-        console.log(currentUserId)
-
         try{
             await createEvent({
                 variables: {
                     input: {
                         name: `${inputs.name}`,
-                        organizer: currentUserId.id,
+                        organizer: userId,
                         location: {
                             address: `${inputs.address}`,
                             city: `${inputs.city}`,

@@ -39,28 +39,10 @@ const Title = styled.h1`
 
 function NavBar(props){
   const navigate = useNavigate();
-  const [authenticated, setAuthenticated] = useState(false);
   const {name, image} = props;
-
-  const getUser = async () => {
-    try {
-      const url = `${backendURL.uri}/login/success`;
-      const { data: { isAuthenticated } } = await axios.get(url, { withCredentials: true });
-      return isAuthenticated
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect( () => {
-    getUser().then((r)=> {
-      setAuthenticated(r.isAuthenticated)
-    });
-  }, []);
 
   const handleLogOut = async (e) => {
     const url = `${backendURL.uri}/logout`
-    setAuthenticated(false)
     await axios.get(url)
     navigate('/');
     window.location.reload();
@@ -73,7 +55,7 @@ function NavBar(props){
           <Profile>
             <ProfilePic src={image}/>
           </Profile>
-          { authenticated ? (<Button onClick={() => handleLogOut()}> LogOut</Button>): (<></>)}
+          <Button onClick={() => handleLogOut()}> LogOut</Button>
         </ProfileWrap>
       </Nav>
     </>

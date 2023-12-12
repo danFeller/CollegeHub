@@ -11,7 +11,7 @@ function Create () {
 
     const getUser = async () => {
         try {
-            const url = `${backendURL.uri}/login/success`;
+            const url = `https://event-management-backend-ffed50068636.herokuapp.com/login/success`;
             const { data: { user } } = await axios.get(url, { withCredentials: true });
             return user
         } catch (err) {
@@ -59,7 +59,7 @@ function Create () {
         };
         
         try {
-            const response = await fetch(`https://event-management-backend-ffed50068636.herokuapp.com/graphql`, {
+            const response = await fetch(`${backendURL.uri}/graphql`, {
                 method: 'POST',
                 body: JSON.stringify(requestBody),
                 headers: {

@@ -134,7 +134,7 @@ function Events() {
                             {events.organizer.id === userId ? (<Button onClick={() => handleDelete(events.id)}>Delete</Button>) : (<></>)}
                         </ModalRow>
                         <ModalRow>
-                            <h5>Location - {events.location.address}, {events.location.city}, {events.location.state} - {events.location.zip}, {events.location.country}</h5>
+                            <h5>Location - {events.location.address}, {events.location.city}, {events.location.state} - {events.location.zipcode}, {events.location.country}</h5>
                         </ModalRow>
                         <ModalRow>
                             <h5>Number of Attendees: {events.attendees.length}</h5>
@@ -150,7 +150,7 @@ function Events() {
                         </ModalRow>
                         {/* onClick={() => handleAttendeesList(events.id)} */}
                         <ModalRow>
-                            {events.organizer.id === userId && events.attendees.length !== 0 ? (<Button onClick={() => HandleAttendeesList(events.id)} >Attendees</Button>) : (<></>)}
+                            {events.organizer.id === userId ? events.attendees.length > 0 ? (<Button onClick={() => HandleAttendeesList(events.id)} >Attendees</Button>) : (<></>) : (<></>)}
                             <Overlay isOpen={isOpen} onClose={toggleOverlay}>
                                 {attendees.map((a) => (
                                     <>

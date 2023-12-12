@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 let httpServer
 
 App.use(cors({
-    origin: "https://event-management-frontend-3e7cdb73f44b.herokuapp.com", // allow to server to accept request from different origin
+    origin: ["http://localhost:2000", "https://event-management-frontend-3e7cdb73f44b.herokuapp.com"], // allow to server to accept request from different origin
     methods: "GET,HEAD,PUT,POST,DELETE,PATCH",
     credentials: true // allow session cookie from browser to pass through
 }));
@@ -25,7 +25,7 @@ async function startServer () {
         await apolloServer.start();
         apolloServer.applyMiddleware({app: App})
         httpServer = App.listen(port)
-        console.log(`🚀 Server listening https://event-management-frontend-3e7cdb73f44b.herokuapp.com 🚀`);
+        console.log(`🚀 Server listening http://localhost:3000 🚀`);
         await connectMongoDatabase()
         console.log("Successfully connected to the database")
         return httpServer

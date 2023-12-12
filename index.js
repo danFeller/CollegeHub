@@ -25,7 +25,7 @@ async function startServer () {
         await apolloServer.start();
         apolloServer.applyMiddleware({app: App})
         httpServer = App.listen(port)
-        console.log(`🚀 Server listening https://event-management-frontend-3e7cdb73f44b.herokuapp.com/events/ 🚀`);
+        console.log(`🚀 Server listening https://event-management-frontend-3e7cdb73f44b.herokuapp.com 🚀`);
         await connectMongoDatabase()
         console.log("Successfully connected to the database")
         return httpServer

@@ -1,5 +1,6 @@
 import axios from "axios";
-import React from 'react'
+import {isAuthenticated} from "passport/lib/http/request";
+import React, {useEffect, useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import backendURL from "../config";
@@ -39,7 +40,25 @@ const Title = styled.h1`
 
 function NavBar(props){
   const navigate = useNavigate();
+  const [authenticated, setAuthenticated] = useState('');
   const {name, image} = props;
+
+  const getUser = async () => {
+    try {
+      const url = `${backendURL.uri}/login/success`;
+      const { data: { isAuthenticated } } = await axios.get(url, { withCredentials: true });
+      return isAuthenticated
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect( () => {
+    getUser().then((r)=> {
+      setAuthenticated(r.isAuthenticated)
+    });
+  }, []);
+
   const handleLogOut = async (e) => {
     const url = `${backendURL.uri}/logout`
     await axios.get(url)
@@ -54,7 +73,7 @@ function NavBar(props){
           <Profile>
             <ProfilePic src={image}/>
           </Profile>
-          <Button onClick={() => handleLogOut()}> LogOut</Button>
+          { authenticated ? (<Button onClick={() => handleLogOut()}> LogOut</Button>): (<></>)}
         </ProfileWrap>
       </Nav>
     </>

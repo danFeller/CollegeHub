@@ -1,6 +1,6 @@
 import React from 'react';
-import NavBar from "../components/NavBar";
 import styled from 'styled-components';
+import NavBar from "../components/NavBar";
 
 const Center = styled.div`
   min-height: 100vh;
@@ -14,7 +14,7 @@ const Login = () => {
     const handleGoogleSignIn = async () => {
         try {
             // Make a request to http://localhost:3000/auth/google
-            window.open( 'http://localhost:3000/auth/google')
+            window.open( 'https://event-management-backend-ffed50068636.herokuapp.com/auth/google')
         } catch (error) {
             console.error('Error initiating Google Sign-In:', error);
         }

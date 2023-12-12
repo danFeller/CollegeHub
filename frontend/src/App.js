@@ -3,7 +3,6 @@ import { onError } from '@apollo/client/link/error';
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import backendURL from './config';
 import Create from './pages/Create';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -17,7 +16,7 @@ const errorLink = onError(({graphqlErrors, networkError}) => {
 })
 const link = from([
   errorLink, 
-  new HttpLink({uri: `${backendURL.uri}/graphql`}),
+  new HttpLink({uri: "https://event-management-backend-ffed50068636.herokuapp.com/graphql"}),
 ])
 //Client Creation; instance of Apollo
 const client = new ApolloClient({

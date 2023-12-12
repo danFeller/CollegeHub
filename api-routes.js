@@ -26,7 +26,7 @@ module.exports = (App) => {
             {
                 clientID: oauth.client_id,
                 clientSecret: oauth.client_secret,
-                callbackURL: 'http://localhost:3000/auth/google/callback',
+                callbackURL: 'https://event-management-backend-ffed50068636.herokuapp.com/auth/google/callback',
             },
             (accessToken, refreshToken, profile, done) => {
                 // In a real application, you would save user information to a database here.

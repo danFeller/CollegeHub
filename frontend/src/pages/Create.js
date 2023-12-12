@@ -59,7 +59,7 @@ function Create () {
         };
         
         try {
-            const response = await fetch(`${backendURL.uri}/graphql`, {
+            const response = await fetch(`https://event-management-backend-ffed50068636.herokuapp.com/graphql`, {
                 method: 'POST',
                 body: JSON.stringify(requestBody),
                 headers: {

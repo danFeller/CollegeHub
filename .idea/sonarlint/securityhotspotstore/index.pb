@@ -35,8 +35,6 @@ D
 database/database.js,c/4/c47f9b48a9fe5efdfaf028eb14d34b21cce844d8
 Q
 !frontend/src/components/Events.js,3/f/3fbb8ea00cc4c052ca290b58f3d49afed7d837c1
-W
-'frontend/src/components/EventDetails.js,8/c/8c099076657a0ccf37b567071a01e86be9c9e558
 S
 #frontend/src/components/MyEvents.js,b/b/bbd6f336751da4f99232d25c4aa403cb25cf9643
 F

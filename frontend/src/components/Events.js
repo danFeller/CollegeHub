@@ -35,6 +35,8 @@ const GET_EVENTS = gql`
             }
             attendees {
                 id
+                firstName
+                lastName
             }
         }
     }
@@ -80,6 +82,14 @@ function Events() {
 
     const { loading, error, data } = useQuery(GET_EVENTS);
 
+    const handleAttendeesList = (eventId) => {
+
+        // This is an array
+        const currentAttendees = data.events.filter((event) => event.id === eventId)
+
+        console.log(currentAttendees[0].attendees) // Remove this 
+    }
+
     const [deleteEvent] = useMutation(DELETE_EVENT);
 
     const [addUser] = useMutation(ADD_USER);
@@ -119,6 +129,9 @@ function Events() {
                             ) : (
                                 <></>
                             )}
+                        </ModalRow>
+                        <ModalRow>
+                            {events.organizer.id === userId ? (<Button onClick={handleAttendeesList(events.id)}>Details</Button>) : (<></>)}
                         </ModalRow>
                     </EventModal>
                 ))}

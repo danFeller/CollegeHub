@@ -1,7 +1,6 @@
 import axios from "axios";
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {redirect} from "react-router";
 import NavBar from "../components/NavBar";
 import backendURL from "../config";
 
@@ -60,7 +59,7 @@ function Create () {
         };
         
         try {
-            const response = await fetch(`http://localhost:3000/graphql`, {
+            const response = await fetch(`${backendURL.uri}/graphql`, {
                 method: 'POST',
                 body: JSON.stringify(requestBody),
                 headers: {

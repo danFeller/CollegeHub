@@ -1,11 +1,12 @@
-import React from 'react'
-import {ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from} from '@apollo/client';
-import {onError} from '@apollo/client/link/error'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import Login from './pages/Login';
-import Home from './pages/Home';
+import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache, from } from '@apollo/client';
+import { onError } from '@apollo/client/link/error';
+import React from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import backendURL from './config';
 import Create from './pages/Create';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import Home from './pages/Home';
+import Login from './pages/Login';
 
 const errorLink = onError(({graphqlErrors, networkError}) => {
   if(graphqlErrors){
@@ -16,7 +17,7 @@ const errorLink = onError(({graphqlErrors, networkError}) => {
 })
 const link = from([
   errorLink, 
-  new HttpLink({uri: "http://127.0.0.1:3000/graphql"}),
+  new HttpLink({uri: `${backendURL.uri}/graphql`}),
 ])
 //Client Creation; instance of Apollo
 const client = new ApolloClient({

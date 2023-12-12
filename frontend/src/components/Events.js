@@ -146,7 +146,7 @@ function Events() {
                         <h5>Event Start Date - {events.startTime}</h5>
                         <ModalRow>
                             <h5>Organizer - {events.organizer.firstName}</h5>
-                            {events.organizer.id !== userId ? events.attendees.some((obj) => obj.id === userId) ? isJoined ? (
+                            {events.organizer.id !== userId ? events.attendees.some((obj) => obj.id === userId) ? !isJoined ? (
                                 <Button onClick={() => handleAttendees(events.id, events.revision)}>Join</Button>
                             ) : (
                                 <h5>Joined!</h5>
@@ -154,7 +154,7 @@ function Events() {
                         </ModalRow>
                         {/* onClick={() => handleAttendeesList(events.id)} */}
                         <ModalRow>
-                           <Button onClick={() => HandleAttendeesList(events.id)} >Attendees</Button>
+                            { events.organizer.id === userId && events.attendees !== 0 ? (<Button onClick={() => HandleAttendeesList(events.id)} >Attendees</Button> ): (<></>) }
                             <Overlay isOpen={isOpen} onClose={toggleOverlay}>
                                 {attendees.map((a) => (
                                     <>

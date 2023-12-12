@@ -6,7 +6,7 @@ const oauth = {
 }
 //frontend
 const frontendURL = {
-    uri: 'http://localhost:2000'
+    uri: 'https://event-management-frontend-3e7cdb73f44b.herokuapp.com'
 }
 
 module.exports = {

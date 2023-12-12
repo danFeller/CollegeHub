@@ -43,3 +43,15 @@ F
 frontend/src/index.css,9/1/91e522be11677dbeaea3b85493b4868d2728cb6c
 R
 "graphql/schema/EventSchema.graphql,2/6/26c8f05bad2a9ca64de8b30a4eb0f5c0f4219073
+R
+"frontend/src/components/NavBar.css,3/e/3e8337cb98919f8fb0f08721f52eb6c0687f0541
+Q
+!frontend/src/components/common.js,8/7/87c862bb10a0679ea34dfbfaee31d66f0eb372e7
+X
+(frontend/src/components/Overlay/index.js,0/b/0bfeb9902d2b74b2e17bdce6ab778c01adba20f8
+[
++frontend/src/components/Overlay/Overlay.css,c/c/cc7ec48ab5460d73ba76d8bff4b884207c13c24b
+E
+database/UserModel.js,e/b/eb69a2a63d984ce0fde9c15dfaa36fdad289a4ab
+F
+database/EventModel.js,f/5/f5c17d958ee37f3f729e4ce09fba05bec93fc8ff

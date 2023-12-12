@@ -14,7 +14,7 @@ const Login = () => {
     const handleGoogleSignIn = async () => {
         try {
             // Make a request to http://localhost:3000/auth/google
-            window.open( 'http://localhost:3000/auth/google')
+            window.open( 'https://event-management-backend-ffed50068636.herokuapp.com/auth/google')
         } catch (error) {
             console.error('Error initiating Google Sign-In:', error);
         }

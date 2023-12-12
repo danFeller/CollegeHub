@@ -1,5 +1,5 @@
 const backendURL = {
-    uri: 'http://localhost:3000'
+    uri: 'https://event-management-backend-ffed50068636.herokuapp.com'
 };
 
 export default backendURL;

@@ -23,9 +23,9 @@ function Create () {
     const getUser = async () => {
         try {
             const url = `https://event-management-backend-ffed50068636.herokuapp.com/login/success`;
-            const { data: { user } } = await axios.get(url, { withCredentials: true });
-            console.log(user)
-            return user
+            const data = await axios.get(url, { withCredentials: true });
+            console.log(data)
+            return data.user
         } catch (err) {
             console.log(err);
         }

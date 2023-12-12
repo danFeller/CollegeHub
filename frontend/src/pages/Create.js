@@ -1,9 +1,12 @@
 import axios from "axios";
 import React, {useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import {redirect} from "react-router";
 import NavBar from "../components/NavBar";
 import backendURL from "../config";
 
 function Create () {
+    const navigate = useNavigate();
     const [inputs, setInputs] = useState({});
     const [userId, setUserId] = useState('')
 
@@ -32,7 +35,6 @@ function Create () {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        console.log(inputs)
         const requestBody = {
             query: `
                 mutation CreateEvent {
@@ -66,8 +68,9 @@ function Create () {
                 }
             });
 
-            const responseData = await response.json();
-            console.log(responseData);
+            await response.json();
+            navigate('/events');
+            window.location.reload();
         } catch (error) {
             console.error('Error during GraphQL request:', error);
         }

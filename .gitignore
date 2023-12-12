@@ -2,3 +2,5 @@
 /.idea/*
 *.pb
 .idea/sonarlint/issuestore/index.pb
+*.pb
+.DS_Store

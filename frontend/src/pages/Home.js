@@ -29,7 +29,6 @@ function Home() {
         try {
             const url = `${backendURL.uri}/login/success`;
             const { data: { user } } = await axios.get(url, { withCredentials: true });
-            console.log(user)
             return user
         } catch (err) {
             console.log(err);
@@ -51,8 +50,6 @@ function Home() {
             <Welcome>
                 <MyEvents/>
                 <EventGrid>
-                    <Events/>
-                    <Events/>
                     <Events/>
                 </EventGrid>
             </Welcome>

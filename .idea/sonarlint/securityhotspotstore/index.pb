@@ -21,8 +21,6 @@ E
 frontend/package.json,3/7/37083060967a471c011a16651e22bdc2ade41759
 J
 frontend/src/pages/Home.js,6/d/6d69fb10eaae9b9c3ab35dc11a291465f02da4fe
-L
-frontend/src/pages/Header.js,4/f/4fd601cf9f99abad6a24b42ce6aae3dc2ab1d24f
 9
 	config.js,1/6/1677f29b39bf4fb465d7689c0b6b95fc646fcdbc
 E
@@ -35,3 +33,13 @@ F
 package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
 D
 database/database.js,c/4/c47f9b48a9fe5efdfaf028eb14d34b21cce844d8
+Q
+!frontend/src/components/Events.js,3/f/3fbb8ea00cc4c052ca290b58f3d49afed7d837c1
+W
+'frontend/src/components/EventDetails.js,8/c/8c099076657a0ccf37b567071a01e86be9c9e558
+S
+#frontend/src/components/MyEvents.js,b/b/bbd6f336751da4f99232d25c4aa403cb25cf9643
+F
+frontend/src/index.css,9/1/91e522be11677dbeaea3b85493b4868d2728cb6c
+R
+"graphql/schema/EventSchema.graphql,2/6/26c8f05bad2a9ca64de8b30a4eb0f5c0f4219073

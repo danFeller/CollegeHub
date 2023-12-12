@@ -1,6 +1,8 @@
+import axios from "axios";
 import React from 'react'
-import { Link } from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
+import backendURL from "../config";
 
 const Nav = styled.nav`
   background-color: #ea580c;
@@ -24,7 +26,14 @@ const ProfilePic = styled.img`
 `
 
 function NavBar(props){
+  const navigate = useNavigate();
   const {name, image} = props;
+  const handleLogOut = async (e) => {
+    const url = `${backendURL.uri}/logout`
+    await axios.get(url)
+    navigate('/');
+    window.location.reload();
+  };
   return (
     <>
       <Nav>
@@ -35,6 +44,7 @@ function NavBar(props){
           <h3>{name}</h3>
           <ProfilePic src={image}/>
         </Profile>
+        <button onClick={() => handleLogOut()}> LogOut</button>
       </Nav>
     </>
   )

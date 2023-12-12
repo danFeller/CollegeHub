@@ -4,7 +4,8 @@ const userResolvers = {
             return await dataSources.serviceAPI.users(ctx, filter)
         },
         user: async(_, {id}, { dataSources, ctx }) => {
-            return await dataSources.serviceAPI.users(ctx, { id: [id]})
+            const user = await dataSources.serviceAPI.users(ctx, { id: [id]})
+            return user[0]
         }
     },
     Mutation: {

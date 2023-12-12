@@ -21,6 +21,8 @@ type Location {
 type Event {
     id: ID!
 
+    revision: String!
+
     status: EventStatus!
 
     name: String!

@@ -1,0 +1,11 @@
+.overlay__close:after {
+  display: inline-block;
+  content: "\00d7";
+}
+.overlay__close {
+  border: none;
+  background-color: transparent;
+  font-size: 36px;
+  cursor: pointer;
+}
+

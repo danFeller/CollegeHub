@@ -7,13 +7,15 @@ const Upcoming = styled.div`
   gap: 2rem;
 
 `
-
+const Title = styled.h1`
+    font-weight: bold;
+`
 
 function MyEvents(){
     return(
         <>
             <Upcoming>
-                <h1>Upcoming Events</h1>
+                <Title>Upcoming Events</Title>
                 <Link className="create-event" to={'/create'}>
                     <Button>Create Event</Button>
                 </Link>

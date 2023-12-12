@@ -3,6 +3,7 @@ import React from 'react'
 import {Link, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 import backendURL from "../config";
+import Button from './common.js'
 
 const Nav = styled.nav`
   background-color: #ea580c;
@@ -25,6 +26,17 @@ const ProfilePic = styled.img`
   border-radius: 25px;
 `
 
+const ProfileWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+`
+
+const Title = styled.h1`
+  font-weight: bold;
+  color: white;
+`
+
 function NavBar(props){
   const navigate = useNavigate();
   const {name, image} = props;
@@ -37,14 +49,13 @@ function NavBar(props){
   return (
     <>
       <Nav>
-        <Link className="navbar-brand" to={'/sign-in'}>
-          <h3>Event Management</h3>
-        </Link>
-        <Profile>
-          <h3>{name}</h3>
-          <ProfilePic src={image}/>
-        </Profile>
-        <button onClick={() => handleLogOut()}> LogOut</button>
+          <Title>Event Management</Title>
+        <ProfileWrap>
+          <Profile>
+            <ProfilePic src={image}/>
+          </Profile>
+          <Button onClick={() => handleLogOut()}> LogOut</Button>
+        </ProfileWrap>
       </Nav>
     </>
   )

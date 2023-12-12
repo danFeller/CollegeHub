@@ -4,13 +4,13 @@ import styled from 'styled-components';
 import backendURL from "../config";
 import {Button, Section} from './common.js';
 import { useQuery, gql, useMutation} from '@apollo/client';
+import Overlay from './Overlay'
 
 const DELETE_EVENT = gql`
     mutation deleteEvent($id: ID!) {
         deleteEvent(id: $id)
     }
 `
-
 const ADD_USER = gql`
     mutation addUser($eventId: ID!, $eventRevision: ID!, $userId: ID!) {
         addUser(eventId: $eventId, eventRevision: $eventRevision, userId: $userId ) {
@@ -19,7 +19,6 @@ const ADD_USER = gql`
         }
     }
 `
-
 const GET_EVENTS = gql`
     query events($filter: EventFilter){
         events(filter:$filter) {
@@ -44,7 +43,6 @@ const GET_EVENTS = gql`
 
 const EventModal = styled.div`
  background: #cbd5e1;
- background: #fb923c;
  width: 400px;
  padding: 1.5rem;
  border-radius: 10px;
@@ -59,11 +57,18 @@ const ModalRow = styled.div`
   justify-content: space-between;
   word-wrap: break-word;
 `;
-
+const Title = styled.h2`
+    font-weight: bold;
+`
 
 function Events() {
     const [userId, setUserId] = useState('');
+    const [isOpen, setIsOpen] = useState(false);
+    const [attendees, setAttendees] = useState([]); 
 
+    const toggleOverlay = () => {
+      setIsOpen(!isOpen);
+    };
     const getUser = async () => {
         try {
             const url = `${backendURL.uri}/login/success`;
@@ -81,19 +86,19 @@ function Events() {
     }, []);
 
     const { loading, error, data } = useQuery(GET_EVENTS);
-
-    const handleAttendeesList = (eventId) => {
-
+    const HandleAttendeesList = (eventId) => {
         // This is an array
         const currentAttendees = data.events.filter((event) => event.id === eventId)
-
-        console.log(currentAttendees[0].attendees) // Remove this 
+        setAttendees(currentAttendees);
+        // console.log(attendees)
+        // for(let i = 0; i < currentAttendees[0].attendees.length; ++i){
+        //     console.log(currentAttendees[0].attendees[i].firstName);
+        // }
+        toggleOverlay();
     }
 
     const [deleteEvent] = useMutation(DELETE_EVENT);
-
     const [addUser] = useMutation(ADD_USER);
-
     const handleDelete = async (eventId) => {
         await deleteEvent({ variables: { id: eventId }, refetchQueries: [{ query: GET_EVENTS }] });
     };
@@ -118,8 +123,11 @@ function Events() {
                 {data.events.map((events) => (
                     <EventModal key={events.id}>
                         <ModalRow>
-                            <h2>{events.name}</h2>
+                            <Title>{events.name}</Title>
                             {events.organizer.id === userId ? (<Button onClick={() => handleDelete(events.id)}>Delete</Button>) : (<></>)}
+                        </ModalRow>
+                        <ModalRow>
+                            <h5>Number of Attendees: {events.attendees.length}</h5>
                         </ModalRow>
                         <h5>Event Start Date - {events.startTime}</h5>
                         <ModalRow>
@@ -130,8 +138,17 @@ function Events() {
                                 <></>
                             )}
                         </ModalRow>
+                        {/* onClick={() => handleAttendeesList(events.id)} */}
                         <ModalRow>
-                            {events.organizer.id === userId ? (<Button onClick={handleAttendeesList(events.id)}>Details</Button>) : (<></>)}
+                            {events.organizer.id === userId && attendees.length != 0 ? (<Button onClick={() => HandleAttendeesList(events.id)} >Attendees</Button>) : (<></>)}
+                            <Overlay isOpen={isOpen} onClose={toggleOverlay}>
+                                {attendees.map((a) => (
+                                    <>
+                                        <h1>Attendees List</h1>
+                                        <h3>{a.attendees[0].firstName}</h3>
+                                    </>
+                                ))}
+                            </Overlay>
                         </ModalRow>
                     </EventModal>
                 ))}

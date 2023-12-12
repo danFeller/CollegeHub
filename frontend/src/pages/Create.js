@@ -1,14 +1,25 @@
 import axios from "axios";
 import React, {useEffect, useState} from 'react';
+import { gql, useMutation} from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
-import {redirect} from "react-router";
 import NavBar from "../components/NavBar";
 import backendURL from "../config";
+
+const CREATE_EVENT = gql`
+    mutation createEvent($input: CreateEventInput!) {
+        createEvent(input: $input ) {
+            id
+            name
+        }
+    }
+`
 
 function Create () {
     const navigate = useNavigate();
     const [inputs, setInputs] = useState({});
     const [userId, setUserId] = useState('')
+
+    const [createEvent] = useMutation(CREATE_EVENT);
 
     const getUser = async () => {
         try {
@@ -35,40 +46,24 @@ function Create () {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const requestBody = {
-            query: `
-                mutation CreateEvent {
-                    createEvent(
-                        input: {
-                            name: "${inputs.name}"
-                            organizer: "${inputs.organizerId}"
-                            location: {
-                                address: "${inputs.address}"
-                                city: "${inputs.city}"
-                                state: "${inputs.state}"
-                                country: "${inputs.country}"
-                                zipcode: "${inputs.zip}"
-                            }
-                            startTime: "${inputs.startTime}"
-                            endTime: "${inputs.endTime}"
-                        }
-                    ) {
-                        id
+        try{
+            await createEvent({
+                variables: {
+                    input: {
+                        name: `${inputs.name}`,
+                        organizer: `${inputs.organizerId}`,
+                        location: {
+                            address: `${inputs.address}`,
+                            city: `${inputs.city}`,
+                            state: `${inputs.state}`,
+                            country: `${inputs.country}`,
+                            zipcode: `${inputs.zip}`,
+                        },
+                        startTime: `${inputs.startTime}`,
+                        endTime: `${inputs.endTime}`
                     }
                 }
-            `
-        };
-        
-        try {
-            const response = await fetch(`https://event-management-backend-ffed50068636.herokuapp.com/graphql`, {
-                method: 'POST',
-                body: JSON.stringify(requestBody),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-
-            await response.json();
+            })
             navigate('/events');
             window.location.reload();
         } catch (error) {

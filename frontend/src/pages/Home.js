@@ -6,6 +6,7 @@ import Events from "../components/Events";
 import MyEvents from "../components/MyEvents";
 import styled from 'styled-components';
 
+
 const Welcome = styled.div`
     // border: 1px solid red;
     padding-top: 20px;
@@ -29,7 +30,7 @@ function Home() {
 
     const getUser = async () => {
         try {
-            const url = `${backendURL.uri}/login/success`;
+            const url = `https://event-management-backend-ffed50068636.herokuapp.com/login/success`;
             const { data: { user } } = await axios.get(url, { withCredentials: true });
             return user
         } catch (err) {

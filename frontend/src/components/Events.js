@@ -37,6 +37,13 @@ const GET_EVENTS = gql`
                 firstName
                 lastName
             }
+            location {
+                address
+                state
+                city
+                zipcode
+                country
+            }
         }
     }
 `;
@@ -125,6 +132,9 @@ function Events() {
                         <ModalRow>
                             <Title>{events.name}</Title>
                             {events.organizer.id === userId ? (<Button onClick={() => handleDelete(events.id)}>Delete</Button>) : (<></>)}
+                        </ModalRow>
+                        <ModalRow>
+                            <h5>Location - {events.location.address}, {events.location.city}, {events.location.state} - {events.location.zip}, {events.location.country}</h5>
                         </ModalRow>
                         <ModalRow>
                             <h5>Number of Attendees: {events.attendees.length}</h5>

@@ -51,7 +51,7 @@ function Create () {
                 variables: {
                     input: {
                         name: `${inputs.name}`,
-                        organizer: `${inputs.organizerId}`,
+                        organizer: `${userId}`,
                         location: {
                             address: `${inputs.address}`,
                             city: `${inputs.city}`,

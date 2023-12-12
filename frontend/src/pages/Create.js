@@ -48,17 +48,17 @@ function Create () {
         let currentUserId
 
         if (userId.trim().length === 0) {
-            currentUserId = getUser().then((r) => {
-                return r.id
-            })
+            currentUserId = await getUser()
         }
+
+        console.log(currentUserId)
 
         try{
             await createEvent({
                 variables: {
                     input: {
                         name: `${inputs.name}`,
-                        organizer: currentUserId,
+                        organizer: currentUserId.id,
                         location: {
                             address: `${inputs.address}`,
                             city: `${inputs.city}`,

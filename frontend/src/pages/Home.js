@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-import backendURL from "../config";
 import NavBar from "../components/NavBar";
 import Events from "../components/Events";
 import MyEvents from "../components/MyEvents";
@@ -24,8 +23,6 @@ const EventGrid = styled.div`
 
 function Home() {
     const [firstName, setFirstName] = useState(null);
-    const [email, setEmail] = useState(null);
-    const [username, setUsername] = useState(null);
     const [picture, setPicture] = useState(null);
 
     const getUser = async () => {
@@ -42,8 +39,6 @@ function Home() {
     useEffect( () => {
         getUser().then((r)=> {
             setFirstName(r.firstName)
-            setEmail(r.email)
-            setUsername(r.username)
             setPicture(r.picture)
         });
     }, []);

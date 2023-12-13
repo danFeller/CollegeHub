@@ -1,7 +1,7 @@
 import React from 'react'
 import {ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from} from '@apollo/client';
 import {onError} from '@apollo/client/link/error'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Create from './pages/Create';
@@ -11,6 +11,7 @@ const errorLink = onError(({graphqlErrors, networkError}) => {
   if(graphqlErrors){
     graphqlErrors.map(({message, location, path}) => {
       alert(`Graphql error ${message}`);
+      return message
     });
   }
 })

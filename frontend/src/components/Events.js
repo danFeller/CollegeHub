@@ -1,7 +1,7 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
 import styled from 'styled-components';
-import {Button, Section} from './common.js';
+import {Button} from './common.js';
 import { useQuery, gql, useMutation} from '@apollo/client';
 import Overlay from './Overlay'
 
@@ -71,7 +71,6 @@ function Events() {
     const [userId, setUserId] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     const [attendees, setAttendees] = useState([]);
-    const [isJoined, setIsJoined] = useState(false);
 
     const toggleOverlay = () => {
       setIsOpen(!isOpen);
@@ -121,8 +120,6 @@ function Events() {
             },
             refetchQueries: [{ query: GET_EVENTS }],
         });
-
-        setIsJoined(true)
     };
 
     if (loading) return <p>Loading...</p>;

@@ -7,9 +7,9 @@ import Home from './pages/Home';
 import Create from './pages/Create';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
-const errorLink = onError(({graphqlErrors, networkError}) => {
+const errorLink = onError(({graphqlErrors}) => {
   if(graphqlErrors){
-    graphqlErrors.map(({message, location, path}) => {
+    graphqlErrors.map(({message}) => {
       alert(`Graphql error ${message}`);
       return message
     });

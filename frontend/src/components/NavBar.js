@@ -39,7 +39,7 @@ function NavBar(props){
   const navigate = useNavigate();
   const {image} = props;
 
-  const handleLogOut = async (e) => {
+  const handleLogOut = async () => {
     const url = `http://event-management-backend-ffed50068636.herokuapp.com/logout`
     const { data } = await axios.get(url)
     console.log(data)

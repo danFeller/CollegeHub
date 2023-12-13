@@ -16,7 +16,7 @@ const errorLink = onError(({graphqlErrors, networkError}) => {
 })
 const link = from([
   errorLink, 
-  new HttpLink({uri: "https://event-management-backend-ffed50068636.herokuapp.com/graphql"}),
+  new HttpLink({uri: "http://event-management-backend-ffed50068636.herokuapp.com/graphql"}),
 ])
 //Client Creation; instance of Apollo
 const client = new ApolloClient({

@@ -22,10 +22,10 @@ function Create () {
 
     const getUser = async () => {
         try {
-            const url = `https://event-management-backend-ffed50068636.herokuapp.com/login/success`;
-            const data = await axios.get(url, { withCredentials: true });
-            console.log(data)
-            return data.user
+            const url = `http://event-management-backend-ffed50068636.herokuapp.com/login/success`;
+            const { data: { user, isAuthenticated }} = await axios.get(url, { withCredentials: true });
+            console.log(isAuthenticated)
+            return user
         } catch (err) {
             console.log(err);
         }

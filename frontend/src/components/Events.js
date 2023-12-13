@@ -78,10 +78,10 @@ function Events() {
     };
     const getUser = async () => {
         try {
-            const url = `https://event-management-backend-ffed50068636.herokuapp.com/login/success`;
-            const data = await axios.get(url, { withCredentials: true });
-            console.log(data)
-            return data.user
+            const url = `http://event-management-backend-ffed50068636.herokuapp.com/login/success`;
+            const { data: { user, isAuthenticated }} = await axios.get(url, { withCredentials: true });
+            console.log(isAuthenticated)
+            return user
         } catch (err) {
             console.log(err);
         }
@@ -146,15 +146,15 @@ function Events() {
                         <h5>Event Start Date - {events.startTime}</h5>
                         <ModalRow>
                             <h5>Organizer - {events.organizer.firstName}</h5>
-                            {events.organizer.id !== userId ? events.attendees.some((obj) => obj.id === userId) ? !isJoined ? (
+                            {events.organizer.id !== userId ? !events.attendees.map((obj) => obj.id).includes(userId) ? (
                                 <Button onClick={() => handleAttendees(events.id, events.revision)}>Join</Button>
                             ) : (
                                 <h5>Joined!</h5>
-                            ) : (<></>): (<></>)}
+                            ) :  (<></>)}
                         </ModalRow>
                         {/* onClick={() => handleAttendeesList(events.id)} */}
                         <ModalRow>
-                            { events.organizer.id === userId && events.attendees !== 0 ? (<Button onClick={() => HandleAttendeesList(events.id)} >Attendees</Button> ): (<></>) }
+                            { events.organizer.id === userId && events.attendees.length > 0 ? (<Button onClick={() => HandleAttendeesList(events.id)} >Attendees</Button> ): (<></>) }
                             <Overlay isOpen={isOpen} onClose={toggleOverlay}>
                                 {attendees.map((a) => (
                                     <>

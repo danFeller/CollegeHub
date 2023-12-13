@@ -26,7 +26,6 @@ module.exports = (App) => {
             {
                 clientID: oauth.client_id,
                 clientSecret: oauth.client_secret,
-                callbackURL: 'https://event-management-backend-ffed50068636.herokuapp.com/auth/google/callback',
                 callbackURL: 'https://event-management-backend-ffed50068636.herokuapp.com/auth/google/callback'
             },
             (accessToken, refreshToken, profile, done) => {

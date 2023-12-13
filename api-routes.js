@@ -97,7 +97,7 @@ module.exports = (App) => {
 
     apiRouter.get('/logout', (ctx) => {
         ctx.logout();
-        ctx.redirect('https://maverickui-33d159bdad98.herokuapp.com');
+        ctx.redirect('/');
     });
 
     // Disable caching

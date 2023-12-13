@@ -47,7 +47,7 @@ module.exports = (App) => {
 
     apiRouter.get('/login/success', async (ctx) => {
         console.log(ctx)
-        if (ctx.isAuthenticated) {
+        if (ctx.isAuthenticated()) {
             ctx.body = {
                 message: 'User details',
                 user: {
@@ -99,7 +99,7 @@ module.exports = (App) => {
 
     apiRouter.get('/logout', (ctx) => {
         ctx.logout();
-        ctx.redirect('http://localhost:2000');
+        ctx.redirect('/');
     });
 
     // Disable caching

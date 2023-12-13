@@ -92,7 +92,7 @@ module.exports = (App) => {
                 ... ctx.state.user
                 // Add other relevant user information as needed
             };
-            ctx.redirect('http://localhost:2000/events')
+            ctx.redirect('https://event-management-frontend-3e7cdb73f44b.herokuapp.com/events')
         }
     );
 

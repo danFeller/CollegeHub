@@ -27,7 +27,7 @@ function Home() {
 
     const getUser = async () => {
         try {
-            const url = `http://event-management-backend-ffed50068636.herokuapp.com/login/success`;
+            const url = `https://event-management-backend-ffed50068636.herokuapp.com/login/success`;
             const { data: { user, isAuthenticated }} = await axios.get(url, { withCredentials: true });
             console.log(isAuthenticated)
             return user

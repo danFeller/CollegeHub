@@ -26,7 +26,7 @@ module.exports = (App) => {
             {
                 clientID: oauth.client_id,
                 clientSecret: oauth.client_secret,
-                callbackURL: 'https://event-management-backend-ffed50068636.herokuapp.com/auth/google/callback'
+                callbackURL: 'https://maverick-e24b493159d8.herokuapp.com/auth/google/callback'
             },
             (accessToken, refreshToken, profile, done) => {
                 // In a real application, you would save user information to a database here.
@@ -46,7 +46,6 @@ module.exports = (App) => {
     })
 
     apiRouter.get('/login/success', async (ctx) => {
-        ctx.debug(ctx.isAuthenticated())
         if (ctx.isAuthenticated()) {
             ctx.body = {
                 message: 'User details',

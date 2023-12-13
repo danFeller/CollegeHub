@@ -46,7 +46,8 @@ module.exports = (App) => {
     })
 
     apiRouter.get('/login/success', async (ctx) => {
-        if (ctx.isAuthenticated()) {
+        console.log(ctx)
+        if (ctx.isAuthenticated) {
             ctx.body = {
                 message: 'User details',
                 user: {

@@ -29,7 +29,7 @@ function Home() {
     const getUser = async () => {
         try {
             const baseUrl = process.env.NODE_ENV === "production"
-                ? "https://marvickui-ac2b96228d5d.herokuapp.com/"
+                ? "https://marvickui-ac2b96228d5d.herokuapp.com"
                 : "http://localhost:3000";
             const url = `${baseUrl}/login/success`;
             const { data: { user, isAuthenticated }} = await axios.get(url, { withCredentials: true });

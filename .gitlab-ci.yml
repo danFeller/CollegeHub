@@ -14,13 +14,15 @@ pages:
   stage: deploy
 
   script:
+    - ls
     - cd frontend        # Navigate to the frontend directory
     - npm install        # Install all dependencies
     - npm run build      # Build for prod
+    - mv build ../public # Move build files to public dir for Gitlab Pages, assuming you are in the frontend directory
 
   artifacts:
     paths:
-      - frontend/build   # Include the build/ folder in the artifacts
+      - public  # Include the public/ folder in the artifacts
 
   only:
     - main

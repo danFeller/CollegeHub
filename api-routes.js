@@ -46,7 +46,7 @@ module.exports = (App) => {
     })
 
     apiRouter.get('/login/success', async (ctx) => {
-        console.log(ctx)
+        ctx.debug(ctx.isAuthenticated())
         if (ctx.isAuthenticated()) {
             ctx.body = {
                 message: 'User details',
@@ -87,13 +87,12 @@ module.exports = (App) => {
 
     apiRouter.get(
         '/auth/google/callback',
-        passport.authenticate('google', { failureRedirect: '/' }),
+        passport.authenticate('google', { failureRedirect: '/' , successRedirect: 'http://localhost:2000/events'}),
         (ctx) => {
             const userInformation = {
                 ... ctx.state.user
                 // Add other relevant user information as needed
             };
-            ctx.redirect('http://localhost:2000/events')
         }
     );
 

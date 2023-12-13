@@ -6,7 +6,7 @@ const oauth = {
 }
 //frontend
 const frontendURL = {
-    uri: 'localhost:2000'
+    uri: 'https://maverickui-33d159bdad98.herokuapp.com'
 }
 
 module.exports = {

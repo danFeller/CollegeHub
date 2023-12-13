@@ -86,7 +86,7 @@ module.exports = (App) => {
 
     apiRouter.get(
         '/auth/google/callback',
-        passport.authenticate('google', { failureRedirect: '/' , successRedirect: 'http://localhost:2000/events'}),
+        passport.authenticate('google', { failureRedirect: '/' , successRedirect: 'https://maverickui-33d159bdad98.herokuapp.com/events'}),
         (ctx) => {
             const userInformation = {
                 ... ctx.state.user
@@ -97,7 +97,7 @@ module.exports = (App) => {
 
     apiRouter.get('/logout', (ctx) => {
         ctx.logout();
-        ctx.redirect('/');
+        ctx.redirect('https://maverickui-33d159bdad98.herokuapp.com');
     });
 
     // Disable caching

@@ -21,7 +21,7 @@ pages:
 
   artifacts:
     paths:
-      - frontend/public
+      - frontend/public  # Include the public/ folder in the artifacts
 
   only:
     - main

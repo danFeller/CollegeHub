@@ -93,13 +93,13 @@ module.exports = (App) => {
                 ... ctx.state.user
                 // Add other relevant user information as needed
             };
-            ctx.redirect('https://event-management-frontend-3e7cdb73f44b.herokuapp.com/events')
+            ctx.redirect('http://localhost:2000/events')
         }
     );
 
     apiRouter.get('/logout', (ctx) => {
         ctx.logout();
-        ctx.redirect('/');
+        ctx.redirect('http://localhost:2000');
     });
 
     // Disable caching

@@ -2,6 +2,8 @@ const Koa = require("koa");
 const parser = require("koa-bodyparser");
 const cors = require("@koa/cors");
 const config = require('./config')
+const serve = require('koa-static');
+const staticPath = './public';
 
 const { apolloServer } = require('./server');
 const {connectMongoDatabase} = require("./database/database");
@@ -9,6 +11,9 @@ const {connectMongoDatabase} = require("./database/database");
 const App = new Koa();
 const port = process.env.PORT || 3000;
 let httpServer
+
+App.use(serve(staticPath));
+
 
 App.use(cors({
     origin: "https://event-management-frontend-3e7cdb73f44b.herokuapp.com", // allow to server to accept request from different origin

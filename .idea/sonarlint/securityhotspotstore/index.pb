@@ -70,3 +70,19 @@ L
 frontend/build/manifest.json,4/8/48936101c57038710055484cf9ce87e283db3a91
 Y
 )frontend/build/static/js/main.e3cedb96.js,2/c/2c64cfa5cd4aafc9d0af7f8df31696da903794d0
+L
+backend/database/database.js,2/6/26e2a8d3b322bd221c65e2690beb5701fd807c29
+M
+backend/service/serviceAPI.js,5/3/5330766720accc9b42ef45c7841b7b97b2164ce8
+A
+backend/config.js,0/7/07dc1fc14d50a62ac3b930d8d59720b133c7d7c7
+D
+backend/package.json,2/d/2d67691333633e849af94af966942f0c1b3151c6
+@
+backend/index.js,8/0/80bbc5cb78649d309f1889f4389113eb55bf357f
+E
+backend/api-routes.js,2/c/2c8556849032465c615bfc106cd945d5618a0b68
+A
+backend/server.js,6/a/6ad52417a68c4b063613f13b17bfb50a32650e68
+D
+frontend/static.json,5/a/5af5ce0a32115d427c2ef48b4cb82338b95130c4

@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://apurvap2.gitlab.io/event-management/",
+  "homepage": ".",
   "dependencies": {
     "@apollo/client": "^3.8.8",
     "@testing-library/jest-dom": "^5.17.0",

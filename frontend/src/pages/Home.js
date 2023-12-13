@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar";
 import Events from "../components/Events";
 import MyEvents from "../components/MyEvents";
 import styled from 'styled-components';
+import backendURL from "../config";
 
 
 const Welcome = styled.div`
@@ -27,7 +28,10 @@ function Home() {
 
     const getUser = async () => {
         try {
-            const url = `https://marvickui-ac2b96228d5d.herokuapp.com/login/success`;
+            const baseUrl = process.env.NODE_ENV === "production"
+                ? "https://marvickui-ac2b96228d5d.herokuapp.com/"
+                : "http://localhost:3000";
+            const url = `${baseUrl}/login/success`;
             const { data: { user, isAuthenticated }} = await axios.get(url, { withCredentials: true });
             console.log(isAuthenticated)
             return user

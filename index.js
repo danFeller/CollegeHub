@@ -16,7 +16,7 @@ App.use(serve(staticPath));
 
 
 App.use(cors({
-    origin: "https://event-management-frontend-3e7cdb73f44b.herokuapp.com", // allow to server to accept request from different origin
+    origin: "http://localhost:2000", // allow to server to accept request from different origin
     methods: "GET,HEAD,PUT,POST,DELETE,PATCH",
     credentials: true // allow session cookie from browser to pass through
 }));

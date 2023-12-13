@@ -78,11 +78,11 @@ function Events() {
     const getUser = async () => {
         try {
             const baseUrl = process.env.NODE_ENV === "production"
-                ? "https://marvickui-ac2b96228d5d.herokuapp.com"
+                ? "https://maverick-e24b493159d8.herokuapp.com"
                 : "http://localhost:3000";
             const url = `${baseUrl}/login/success`;
-            const { data: { user, isAuthenticated }} = await axios.get(url, { withCredentials: true });
-            console.log(isAuthenticated)
+            const {data: {user}} = await axios.get(url, { withCredentials: true })
+
             return user
         } catch (err) {
             console.log(err);
@@ -99,11 +99,9 @@ function Events() {
     const HandleAttendeesList = (eventId) => {
         // This is an array
         const currentAttendees = data.events.filter((event) => event.id === eventId)
-        setAttendees(currentAttendees);
-        // console.log(attendees)
-        // for(let i = 0; i < currentAttendees[0].attendees.length; ++i){
-        //     console.log(currentAttendees[0].attendees[i].firstName);
-        // }
+        if (currentAttendees && currentAttendees.length > 0) {
+            setAttendees(currentAttendees[0].attendees);
+        }
         toggleOverlay();
     }
 
@@ -156,10 +154,10 @@ function Events() {
                         <ModalRow>
                             { events.organizer.id === userId && events.attendees.length > 0 ? (<Button onClick={() => HandleAttendeesList(events.id)} >Attendees</Button> ): (<></>) }
                             <Overlay isOpen={isOpen} onClose={toggleOverlay}>
+                                <h1>Attendees List</h1>
                                 {attendees.map((a) => (
                                     <>
-                                        <h1>Attendees List</h1>
-                                        <h3>{a.attendees[0].firstName}</h3>
+                                        <h3>{a.firstName}</h3>
                                     </>
                                 ))}
                             </Overlay>

@@ -13,7 +13,7 @@ const Login = () => {
 
     const handleGoogleSignIn = async () => {
         try {
-            window.open( 'https://marvickui-ac2b96228d5d.herokuapp.com/auth/google')
+            window.open( 'https://maverick-e24b493159d8.herokuapp.com/auth/google')
         } catch (error) {
             console.error('Error initiating Google Sign-In:', error);
         }

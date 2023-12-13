@@ -1,5 +1,5 @@
 const backendURL = {
-    uri: 'https://marvickui-ac2b96228d5d.herokuapp.com/'
+    uri: 'https://maverick-e24b493159d8.herokuapp.com/'
 };
 
 export default backendURL;

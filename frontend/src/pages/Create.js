@@ -22,9 +22,12 @@ function Create () {
 
     const getUser = async () => {
         try {
-            const url = `https://marvickui-ac2b96228d5d.herokuapp.com/login/success`;
-            const { data: { user, isAuthenticated }} = await axios.get(url, { withCredentials: true });
-            console.log(isAuthenticated)
+            const baseUrl = process.env.NODE_ENV === "production"
+                ? "https://maverick-e24b493159d8.herokuapp.com"
+                : "http://localhost:3000";
+            const url = `${baseUrl}/login/success`;
+            const {data: {user}} = await axios.get(url, { withCredentials: true })
+
             return user
         } catch (err) {
             console.log(err);
@@ -44,7 +47,6 @@ function Create () {
     }
 
     const handleSubmit = async (event) => {
-        console.log(userId)
         event.preventDefault();
         try{
             await createEvent({

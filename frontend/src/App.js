@@ -17,7 +17,7 @@ const errorLink = onError(({graphqlErrors}) => {
 })
 const link = from([
   errorLink, 
-  new HttpLink({uri: "https://marvickui-ac2b96228d5d.herokuapp.com/graphql"}),
+  new HttpLink({uri: "https://maverick-e24b493159d8.herokuapp.com/graphql"}),
 ])
 //Client Creation; instance of Apollo
 const client = new ApolloClient({

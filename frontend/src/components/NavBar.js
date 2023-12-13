@@ -37,7 +37,7 @@ const Title = styled.h1`
 
 function NavBar(props){
   const navigate = useNavigate();
-  const {name, image} = props;
+  const {image} = props;
 
   const handleLogOut = async (e) => {
     const url = `http://event-management-backend-ffed50068636.herokuapp.com/logout`

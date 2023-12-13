@@ -5,7 +5,7 @@ variables:
 
 cache:
   paths:
-    - node_modules
+    - frontend/node_modules
 
 stages:
   - deploy
@@ -14,14 +14,14 @@ pages:
   stage: deploy
 
   script:
+    - cd frontend        # Navigate to the frontend directory
     - npm install        # Install all dependencies
     - npm run build      # Build for prod
-    - mv public _public  # CRA and gitlab pages both use the public folder. Only do this in a build pipeline.
     - mv build public    # Move build files to public dir for Gitlab Pages
 
   artifacts:
     paths:
-      - public
+      - frontend/public
 
   only:
     - main

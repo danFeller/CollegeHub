@@ -1,5 +1,5 @@
 const backendURL = {
-    uri: 'https://event-management-backend-ffed50068636.herokuapp.com'
+    uri: 'https://marvickui-ac2b96228d5d.herokuapp.com/'
 };
 
 export default backendURL;
